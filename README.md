@@ -19,7 +19,7 @@ docker pull futurejones/swiftlang
 ##### Create a Container from the Image and Attach It:
 
 ```bash
-docker run --privileged -i -t --name swiftlang futurejones/swiftlang:latest /bin/bash
+docker run --privileged -i -t --name swiftlang futurejones/swiftlang /bin/bash
 ```
 
 ##### To Start and Attach Your Image Later:
