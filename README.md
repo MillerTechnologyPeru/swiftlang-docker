@@ -36,7 +36,7 @@ and then attach it
 docker attach swiftlang
 ```
 
-# Building Multi-Arch Image using Docker Desktop
+# Building a Multi-Arch Image using Docker Desktop
 To get started read this introduction and install Docker Desktop.  
 [Building Multi-Arch Images for Arm and x86 with Docker Desktop](https://engineering.docker.com/2019/04/multi-arch-images/).  
 *NOTE: You will need to install version 2.0.4.0 (33772)+*
@@ -50,7 +50,8 @@ cd to either `swiftlang` or `swiftlang-min` image directory
 ```bash
 cd swiftlang-docker/swiftlang
 ```
-set `platform` and build image using `buildx` 
+set `platform` and build image using `buildx`  
+NOTE: You can only build for platforms that are supported in the [swift-arm/docker](https://packagecloud.io/swift-arm/docker) repository.
 ```bash
 docker buildx build --platform linux/amd64,linux/arm64 --push -t [your_user_name/tag_name] .
 ```
