@@ -50,6 +50,11 @@ cd to either `swiftlang` or `swiftlang-min` image directory
 ```bash
 cd swiftlang-docker/swiftlang
 ```
+Create and use new builder
+```
+docker buildx create --name mybuilder
+docker buildx use mybuilder
+```
 set `platform` and build image using `buildx`  
 NOTE: You can only build for platforms that are supported in the [swift-arm/docker](https://packagecloud.io/swift-arm/docker) repository.
 ```bash
