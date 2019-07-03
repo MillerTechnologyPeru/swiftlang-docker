@@ -1,5 +1,5 @@
 # swiftlang-docker
-Docker Multi-Arch (x86_64 / AArch64) Image packaging for Swift
+Docker Multi-Arch (x86_64 / AArch64 / Armv7) Image packaging for Swift
 
 <img src="https://swift.org/assets/images/swift.svg" alt="Swift logo" height="70" >
 
@@ -58,7 +58,7 @@ docker buildx use mybuilder
 set `platform` and build image using `buildx`  
 NOTE: You can only build for platforms that are supported in the [swift-arm/docker](https://packagecloud.io/swift-arm/docker) repository.
 ```bash
-docker buildx build --platform linux/amd64,linux/arm64 --push -t [your_user_name/tag_name] .
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 --push -t [your_user_name/tag_name] .
 ```
 
 ## License
