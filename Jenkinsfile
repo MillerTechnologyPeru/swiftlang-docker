@@ -11,10 +11,13 @@ pipeline {
     stages {
         stage('Testing') {
             steps {
-                // cleanWs()
-                echo "Testing docker image creation with buildx"
-
+              // cleanWs()
+              echo "Testing docker image creation with buildx"
+              sh 'ls'
+              dir('swiftlang-slim') {
+                echo "building swiftlang-slim"
                 sh 'ls'
+              }
             }
         }
     }
