@@ -17,6 +17,7 @@ pipeline {
               dir('swiftlang-slim') {
                 echo "building swiftlang-slim"
                 sh 'ls'
+                sh 'docker buildx build --platform linux/amd64,linux/arm64 --push -t swiftarm/swift-slim:5.5.2-focal-multi-arch-jenkins-ci-test .'
               }
             }
         }
