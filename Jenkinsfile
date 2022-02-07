@@ -4,20 +4,15 @@ pipeline {
 
     environment {
         //
-        OLD_DATE='2021-09-07-a'
-        NEW_DATE='2021-10-18-a'
    }
 
     stages {
-        stage('Testing') {
+        stage('Build Swift-Slim') {
             steps {
               // cleanWs()
-              echo "Testing docker image creation with buildx"
-              sh 'ls'
+              echo "building swiftlang-slim image"
               dir('swiftlang-slim') {
-                echo "building swiftlang-slim"
-                sh 'ls'
-                sh 'docker buildx build --platform linux/amd64,linux/arm64 --push -t swiftarm/beta-testing:5.5.2-focal-multi-arch-jenkins-ci-test .'
+                sh 'docker buildx build --platform linux/amd64,linux/arm64 --push -t swiftarm/beta-testing:5.5.2-ubuntu-focal-slim .'
               }
             }
         }
