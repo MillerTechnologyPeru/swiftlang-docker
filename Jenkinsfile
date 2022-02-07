@@ -5,7 +5,7 @@ pipeline {
     environment {
         SWIFT_VERSION = '5.5.2'
         OS = 'ubuntu'
-        OS_VERSION = 'focal'
+        OS_VERSION = 'hirsute'
     }
 
     stages {
