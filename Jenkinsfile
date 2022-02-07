@@ -2,10 +2,6 @@
 pipeline {
     agent { label 'imac' }
 
-    environment {
-        //
-   }
-
     stages {
         stage('Build Swift-Slim') {
             steps {
