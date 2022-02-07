@@ -1,34 +1,21 @@
-FROM ubuntu:18.04
-
-LABEL maintainer="Swift-Arm <swift-arm.com>"
-LABEL Description="Multi-Arch Docker Container for the Swift programming language"
+# Ubuntu Focal 20.04
+# Swift 5.5.2 Release
+FROM ubuntu:20.04
+LABEL maintainer="Swift on Arm <docker@swift-arm.com>"
+LABEL description="Docker Container for the Swift programming language"
 
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && apt-get -q update && \
     apt-get -q install -y \
-    libatomic1 \
-    libbsd0 \
-    libcurl4 \
-    libxml2 \
-    libedit2 \
-    libsqlite3-0 \
-    libc6-dev \
-    binutils \
-    libgcc-5-dev \
-    libstdc++-5-dev \
-    libpython2.7 \
-    tzdata \
-    git \
+    ca-certificates \
     curl \
-    pkg-config
+    gnupg
 
+RUN curl -fsSL https://archive.swiftlang.xyz/swiftlang_repo.gpg.key | gpg --dearmor -o /usr/share/keyrings/swiftlang_repo.gpg.key
 
-RUN curl -s https://packagecloud.io/install/repositories/swift-arm/docker/script.deb.sh | bash
+RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/swiftlang_repo.gpg.key] https://archive.swiftlang.xyz/ubuntu focal main" | tee /etc/apt/sources.list.d/swiftlang.list > /dev/null
 
-RUN apt-get -q install -y swiftlang-dev
+RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && apt-get -q update && \
+    apt-get -q install -y \
+    swiftlang
 
-# delete all the apt list files since they're big and get stale quickly
-RUN rm -rf /var/lib/apt/lists/*
-
-RUN mkdir TestFiles
-
-COPY src/ /TestFiles
+RUN rm -r /var/lib/apt/lists/*
