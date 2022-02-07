@@ -5,7 +5,7 @@ pipeline {
     environment {
         SWIFT_VERSION = '5.5.2'
         OS = 'debian'
-        OS_VERSION = 'buster'
+        OS_VERSION = 'bullseye'
     }
 
     stages {
