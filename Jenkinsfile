@@ -4,8 +4,8 @@ pipeline {
 
     environment {
         SWIFT_VERSION = '5.5.2'
-        OS = 'ubuntu'
-        OS_VERSION = 'jammy'
+        OS = 'debian'
+        OS_VERSION = 'buster'
     }
 
     stages {
