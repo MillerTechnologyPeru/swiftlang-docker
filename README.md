@@ -1,11 +1,11 @@
 # swiftlang-docker
-Docker Multi-Arch (x86_64 / AArch64 / Armv7) Image packaging for Swift
+Docker Multi-Arch (x86_64 / AArch64 /Arm64) Image packaging for Swift
 
 <img src="https://swift.org/assets/images/swift.svg" alt="Swift logo" height="70" >
 
-### Ubuntu 18.04 Multi-Arch (x86_64 / AArch64 / Armv7) Docker images for [Swift](https://swift.org).
+### Ubuntu and Debian Multi-Arch (x86_64 / AArch64 / Arm64) Docker images for [Swift](https://swift.org).
 
-#### You can find the Docker Hub repo here: [https://hub.docker.com/r/futurejones/swiftlang](https://hub.docker.com/r/futurejones/swiftlang)
+#### You can find the Docker Hub repo here: [https://hub.docker.com/r/swiftarm/swift](https://hub.docker.com/r/swiftarm/swift)
 
 
 ### Docker Instructions
@@ -13,52 +13,47 @@ Docker Multi-Arch (x86_64 / AArch64 / Armv7) Image packaging for Swift
 #### Pull the Docker Image From Docker Hub:
 
 ```bash
-docker pull futurejones/swiftlang
+docker pull swiftarm/swift:[TAG]
 ```
 
-#### Create a Container from the Image and Attach It:
+#### Create a container from the image and run it:
 
 ```bash
-docker run --privileged -i -t --name swiftlang futurejones/swiftlang /bin/bash
+docker run -it swiftarm/swift:[TAG] /bin/bash
 ```
-
-#### To Start and Attach Your Image Later:
-
-Start your image with name `swiftlang`
-
+If you want to run the Swift REPL you will need to run the container with additional privileges:
 ```bash
-docker start swiftlang
-```
-
-and then attach it
-
-```bash
-docker attach swiftlang
+docker run --security-opt seccomp=unconfined -it swiftarm/swift:[TAG] /bin/bash
 ```
 
 # Building a Multi-Arch Image using Docker Desktop
 To get started read this introduction and install Docker Desktop.  
 [Building Multi-Arch Images for Arm and x86 with Docker Desktop](https://engineering.docker.com/2019/04/multi-arch-images/).  
-*NOTE: You will need to install version 2.0.4.0 (33772)+*
+
 
 ### Build Instructions
-Clone Repository
+*The build example here uses swiftlang install packages from the [Swift Community Apt Repository](https://swiftlang.xyz)*
+
+**Clone This Repository**
 ```bash
 git clone https://github.com/futurejones/swiftlang-docker
 ```
-cd to either `swiftlang` or `swiftlang-min` image directory
+cd to `swiftlang` directory
 ```bash
-cd swiftlang-docker/swiftlang
+cd swiftlang
 ```
-Create and use new builder
+**Create and use a new buildx builder**
 ```
 docker buildx create --name mybuilder
 docker buildx use mybuilder
 ```
-set `platform` and build image using `buildx`  
-NOTE: You can only build for platforms that are supported in the [swift-arm/docker](https://packagecloud.io/swift-arm/docker) repository.
+**Set `platform` and build image using `buildx`**
+
+NOTE: You can only build for platforms that are supported in the [Swift Community Apt Repository](https://swiftlang.xyz).
+
+**Build image with buildx**
 ```bash
-docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 --push -t [your_user_name/tag_name] .
+docker buildx build --platform linux/amd64,linux/arm64 --push -t [your_user_name/tag_name] .
 ```
 
 ## License
