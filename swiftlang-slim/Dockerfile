@@ -1,5 +1,5 @@
 # Ubuntu Focal 20.04
-# Swift-Slim 5.5.2 Release
+# Swift-Slim Latest Release
 FROM ubuntu:20.04
 LABEL maintainer="Swift on Arm <docker@swift-arm.com>"
 LABEL description="Docker Container for the Swift programming language"
@@ -14,6 +14,8 @@ RUN curl -fsSL https://archive.swiftlang.xyz/swiftlang_repo.gpg.key | gpg --dear
 
 RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/swiftlang_repo.gpg.key] https://archive.swiftlang.xyz/ubuntu focal main" | tee /etc/apt/sources.list.d/swiftlang.list > /dev/null
 
+# swift version is set from Jenkinsfile build command
+ARG SWIFT_VERSION=default
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && apt-get -q update && \
     apt-get -q install -y \
     swiftlang-slim
