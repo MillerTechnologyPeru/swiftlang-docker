@@ -13,7 +13,7 @@ pipeline {
             steps {
               echo "building swiftlang-slim image"
               dir('swiftlang-slim') {
-                sh 'docker buildx build --build-arg SWIFT_VERSION=${SWIFT_VERSION} --progress=plain --platform linux/amd64,linux/arm64 --push -t swiftarm/beta-testing:${SWIFT_VERSION}-${OS}-${OS_VERSION}-slim .'
+                sh 'docker buildx build --build-arg SWIFT_VERSION=${SWIFT_VERSION} --progress=plain --platform linux/amd64,linux/arm64 --push -t swiftarm/swift:${SWIFT_VERSION}-${OS}-${OS_VERSION}-slim .'
               }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
             steps {
               echo "building swiftlang image"
               dir('swiftlang') {
-                sh 'docker buildx build --build-arg SWIFT_VERSION=${SWIFT_VERSION} --progress=plain --platform linux/amd64,linux/arm64 --push -t swiftarm/beta-testing:${SWIFT_VERSION}-${OS}-${OS_VERSION} .'
+                sh 'docker buildx build --build-arg SWIFT_VERSION=${SWIFT_VERSION} --progress=plain --platform linux/amd64,linux/arm64 --push -t swiftarm/swift:${SWIFT_VERSION}-${OS}-${OS_VERSION} .'
               }
             }
         }
