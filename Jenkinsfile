@@ -3,7 +3,7 @@ pipeline {
     agent { label 'imac' }
 
     environment {
-        SWIFT_VERSION = '5.5.2'
+        SWIFT_VERSION = '5.5.3'
         OS = 'ubuntu'
         OS_VERSION = 'focal'
     }
