@@ -4,7 +4,7 @@ FROM debian:10
 LABEL maintainer="Swift on Arm <docker@swift-arm.com>"
 LABEL description="Docker Container for the Swift programming language"
 
-RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && apt-get -q update && apt-get -q upgrade && \
+RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true && apt-get -q update && \
     apt-get -q install -y \
     ca-certificates \
     curl \
