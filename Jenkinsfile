@@ -3,7 +3,7 @@ pipeline {
     agent { label 'imac' }
 
     environment {
-        SWIFT_VERSION = '5.5.3'
+        SWIFT_VERSION = '5.6.1'
         OS = 'debian'
         OS_VERSION = 'bullseye'
     }
