@@ -28,7 +28,7 @@ docker run --security-opt seccomp=unconfined -it swiftarm/swift:[TAG] /bin/bash
 
 # Building a Multi-Arch Image using Docker Desktop
 To get started read this introduction and install Docker Desktop.  
-[Building Multi-Arch Images for Arm and x86 with Docker Desktop](https://engineering.docker.com/2019/04/multi-arch-images/).  
+[Building Multi-Arch Images for Arm and x86 with Docker Desktop](https://docs.docker.com/desktop/multi-arch/).  
 
 
 ### Build Instructions
